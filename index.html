@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>ANGULAR JS</title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+   <script type="text/javascript" src="app.js"></script>
+</head>
+<style type="text/css">
+   #container{
+      width: 500px;
+      margin: 100px auto;
+   }
+   .tamamlandi{
+      color: #ccc;
+      text-decoration: line-through;
+   }
+   li,ul{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+   }
+</style>
+<body ng-app="app">
+
+<div id="container" ng-controller="gorevListesi">
+   <h1>YAPILACAKLAR LİSTESİ</h1>
+   <ul>
+      <li ng-repeat="ekranaYaz in liste">
+         <input type="checkbox" ng-model="ekranaYaz.onay">
+         <span ng-class="{'tamamlandi' : ekranaYaz.onay}">{{ ekranaYaz.ad }}</span>
+      </li>
+      <br>
+      <button class="btn btn-danger" ng-click="gorevSil()">YAPILANLARI SİL</button>
+      <br><br>
+      <form ng-submit="yeniGorev()" name="frm" novalidate>
+         <input type="text" ng-model="gorevEkle" required class="form-control" placeholder="YAPILACAK İŞ EKLE"><br><br>
+         <button ng-disabled="frm.$invalid" class="btn btn-primary">EKLE</button>
+      </form>
+   </ul>
+</div>
+
+</body>
+
+</html>
